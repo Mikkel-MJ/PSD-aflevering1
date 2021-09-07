@@ -145,3 +145,14 @@ let rec simplify (e:aexpr) : aexpr =
 
  // simplify (Mul(CstI 2,Sub(Var "v",Add(Var "w",Var "z"))));;
   simplify ae2;;
+
+  (*Opgave V*)
+
+  let rec dif (e:aexpr) i : aexpr = 
+    match e with
+    | CstI _ -> CstI 0
+    | Var x -> if i = x then CstI 1 else CstI 0
+    | Add(e1,e2) -> Add(dif e1 i, dif e2 i)
+    | Sub(e1,e2) -> Sub(dif e1 i, dif e2 i)
+    | Mul(e1,e2) -> Add(Mul(e2, dif e1 i), Mul(e1, dif e2 i))
+
