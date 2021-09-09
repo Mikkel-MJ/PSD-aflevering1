@@ -6,7 +6,7 @@
 (* Object language expressions with variable bindings and nested scope *)
 
 module Intcomp1
-(*Exercise 2.1*)
+
 type expr = 
   | CstI of int
   | Var of string
@@ -45,6 +45,8 @@ let rec lookup env x =
     | []        -> failwith (x + " not found")
     | (y, v)::r -> if x=y then v else lookup r x;;
 
+
+    (*Exercise 2.1*)
 let rec eval e (env : (string * int) list) : int =
     match e with
     | CstI i            -> i
@@ -184,7 +186,7 @@ let e9s1a = subst e9 [("y", Var "z")];;
 
 (* ---------------------------------------------------------------------- *)
 
-(* Free variables *)   (*Exercise 2.2*)
+(* Free variables *)   
 
 (* Operations on sets, represented as lists.  Simple but inefficient;
    one could use binary trees, hashtables or splaytrees for
@@ -208,6 +210,7 @@ let rec minus (xs, ys) =
 
 (* Find all variables that occur free in expression e *)
 
+(*Exercise 2.2*)
 let rec freevars e : string list =
     match e with
     | CstI i -> []
@@ -239,8 +242,9 @@ let rec getindex vs x =
     | []    -> failwith "Variable not found"
     | y::yr -> if x=y then 0 else 1 + getindex yr x;;
 
-(* Compiling from expr to texpr *)     (*Exercise 2.3*)
+(* Compiling from expr to texpr *)   
 
+(*Exercise 2.3*)
 let rec tcomp (e : expr) (cenv : string list) : texpr =
     match e with
     | CstI i -> TCstI i
