@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Intcomp1.fs" />
     <Compile Include="Intro2.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

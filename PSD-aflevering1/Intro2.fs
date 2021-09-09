@@ -143,9 +143,6 @@ let rec simplify (e:aexpr) : aexpr =
   | Mul(_, CstI 0) -> CstI 0
   | Mul(e1,e2) -> Mul(simplify e1,simplify e2);;
 
- // simplify (Mul(CstI 2,Sub(Var "v",Add(Var "w",Var "z"))));;
-  simplify ae2;;
-
   (*Opgave V*)
 
   let rec dif (e:aexpr) i : aexpr = 
